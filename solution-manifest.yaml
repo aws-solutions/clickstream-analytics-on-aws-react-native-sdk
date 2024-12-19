@@ -1,0 +1,6 @@
+id: SO0332
+name: clickstream-react-native
+version: v0.3.1
+cloudformation_templates: []
+build_environment:
+  build_image: 'aws/codebuild/standard:7.0'

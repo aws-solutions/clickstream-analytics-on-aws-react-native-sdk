@@ -63,6 +63,7 @@ android/keystores/debug.keystore
 
 # Yarn
 .yarn/*
+example/.yarn/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -73,4 +74,10 @@ lib
 lib-esm
 coverage
 *.tgz
+
+.scannerwork/*
+deployment/open-source/
+deployment/regional-s3-assets
+deployment/global-s3-assets
+deployment/exclude-open-source-list.txt
 

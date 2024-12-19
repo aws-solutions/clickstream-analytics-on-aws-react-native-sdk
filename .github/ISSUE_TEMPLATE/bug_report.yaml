@@ -1,5 +1,8 @@
 name: Bug Report
-description: Create a report to help us improve
+about: Create a report to help us improve
+title: ''
+labels: 'bug'
+assignees: ''
 body:
   - type: textarea
     id: description
@@ -81,6 +84,11 @@ body:
     attributes:
       label: Regression additional context
       placeholder: If it was a regression provide the versions used before and after the upgrade.
+  - type: textarea
+    id: context
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem (please **DO NOT include sensitive information**).
   - type: textarea
     id: context
     attributes:

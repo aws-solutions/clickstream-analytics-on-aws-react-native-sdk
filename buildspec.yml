@@ -1,0 +1,113 @@
+---
+version: 0.2
+
+env:
+  shell: bash
+  variables:
+    JAVA_HOME: /usr/lib/jvm/java-17-amazon-corretto
+    ANDROID_HOME: /usr/local/android-sdk
+    ANDROID_COMMAND_LINE_TOOLS_VERSION: "11076708"
+    NODE_VERSION: 23.3.0
+    YARN_VERSION: 4.5.3
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+      java: corretto17
+    commands:
+      - CURRENT_DIR=$(pwd)
+      - echo "Verifying Java installation..."
+      - java -version
+      - echo "Installing Node.js dependencies..."
+      - npm install -g yarn
+      - n ${NODE_VERSION}
+      - node --version
+      - yarn install
+      - yarn set version ${YARN_VERSION}
+      - yarn --version
+      - |-
+        echo "Installing Android dependencies..."
+        apt-get update && apt-get install -y lib32stdc++6 lib32z1
+        wget https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_COMMAND_LINE_TOOLS_VERSION}_latest.zip
+        mkdir -p ${ANDROID_HOME}/cmdline-tools
+        unzip commandlinetools-linux-${ANDROID_COMMAND_LINE_TOOLS_VERSION}_latest.zip -d ${ANDROID_HOME}/cmdline-tools
+        mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest
+      - cd ${ANDROID_HOME}/cmdline-tools/latest/bin
+      - ./sdkmanager --version
+      - yes | ./sdkmanager --licenses
+      - ./sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+      - cd $CURRENT_DIR
+      
+
+  pre_build:
+    commands:
+      - echo "=== Starting Pre-Build Phase ==="
+      - |-
+        echo "=== Starting Quality Checks ==="
+        set -euxo pipefail
+        CURRENT_DIR=$(pwd)
+        echo "Java Version check:"
+        java -version
+        echo "JAVA_HOME is set to: $JAVA_HOME"
+        cd $CURRENT_DIR
+        echo "Running code formatting..."
+        yarn run format
+        echo "✓ Code formatting complete"
+        echo "Running linting checks..."
+        yarn run lint
+        echo "✓ Linting complete"
+        echo "Running test suites..."
+        yarn run test
+        TEST_EXIT_CODE=$?
+        if [ $TEST_EXIT_CODE -ne 0 ]; then
+          echo "❌ Error: Test suite failed with exit code $TEST_EXIT_CODE" >&2
+          exit 1
+        fi
+        echo "✓ All tests passed successfully"
+
+  build:
+    commands:
+      - echo "=== Starting Build Phase @ $(date) ==="
+      - CURRENT_DIR=$(pwd)
+      - cd deployment
+      - chmod +x ./build-s3-dist.sh && ./build-s3-dist.sh --template-bucket ${TEMPLATE_OUTPUT_BUCKET}
+        --version ${VERSION} --region ${AWS_REGION}
+      - echo "Build completed $(date)"
+      - echo "Starting open-source-dist $(date) in $(pwd)"
+      - chmod +x ./build-open-source-dist.sh
+      - ./build-open-source-dist.sh $SOLUTION_NAME
+      - echo "Open Source Dist completed $(date)"
+      - cd $CURRENT_DIR
+      - echo "Run Build"
+      - yarn run build
+      - echo "Run build apk"
+      - cd example/android
+      - ./gradlew assembleDebug
+      - cd $CURRENT_DIR
+
+  post_build:
+    commands:
+      - echo "=== Starting Post-Build Phase ==="
+      - |-
+        echo "Build Summary:"
+        echo "- Node Version: $(node -v)"
+        echo "- NPM Version: $(npm -v)"
+        echo "- Yarn Version: $(yarn -v)"
+        echo "- Java Version: $(java -version)"
+        echo "- Build Timestamp: $(date)"
+      - echo "=== Build Process Completed Successfully ==="
+
+artifacts:
+  exclude-paths:
+    - .nightswatch/**/*
+  files:
+    - '**/*'
+
+cache:
+  paths:
+    - node_modules/**/*
+    - android/.gradle/**/*
+    - ios/Pods/**/*
+    - ~/.gradle/**/*
+    - ~/.cache/yarn/**/*

@@ -3,16 +3,16 @@
 ## Introduction
 
 Clickstream React Native SDK can help you easily collect and report events from React Native apps to AWS. This SDK is
-part of an AWS solution - [Clickstream Analytics on AWS](https://github.com/awslabs/clickstream-analytics-on-aws), which
+part of an AWS solution - [Clickstream Analytics on AWS](https://github.com/aws-solutions/clickstream-analytics-on-aws), which
 provisions data pipeline to ingest and process event data into AWS services such as Amazon S3, Redshift.
 
-The SDK relies on the [Clickstream Android SDK](https://github.com/awslabs/clickstream-android)
-and [Clickstream Swift SDK](https://github.com/awslabs/clickstream-swift). Therefore, Clickstream React Native SDK also
+The SDK relies on the [Clickstream Android SDK](https://github.com/aws-solutions/clickstream-android)
+and [Clickstream Swift SDK](https://github.com/aws-solutions/clickstream-swift). Therefore, Clickstream React Native SDK also
 supports automatically collect common preset events and attributes (e.g., session start, first open). In addition, we've
 added easy-to-use APIs to simplify data collection in React Native apps.
 
 Visit
-our [Documentation site](https://awslabs.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/react-native/) to
+our [Documentation site](https://aws-solutions.github.io/clickstream-analytics-on-aws/en/latest/sdk-manual/react-native/) to
 learn more about Clickstream React Native SDK.
 
 ### Platform Support
@@ -26,13 +26,13 @@ learn more about Clickstream React Native SDK.
 ### Include SDK
 
 ```bash
-npm install @aws/clickstream-react-native
+$ npm install @aws/clickstream-react-native
 ```
 
 After complete, you need to install the pod dependencies for iOS:
 
 ```bash
-cd ios && pod install
+$ cd ios && pod install
 ```
 
 ### Initialize the SDK
@@ -305,27 +305,36 @@ Clone this repository locally and execute the following script to generate `aws-
 package, which will be located in the project root folder.
 
 ```bash
-cd clickstream-react-native && yarn && yarn run pack
+$ cd clickstream-react-native && yarn && yarn run pack
 ```
 
 Copy the `aws-clickstream-react-native-0.3.1.tgz` into your project, then execute the script in your project root folder to
 install the SDK.
 
 ```bash
-yarn add ./aws-clickstream-react-native-0.3.1.tgz
+$ yarn add ./aws-clickstream-react-native-0.3.1.tgz
 ```
 
 **Note**: Please correct the SDK version and change the path to where the `aws-clickstream-react-native-0.3.1.tgz` file is
 located.
 
 You can also find the `aws-clickstream-react-native-0.3.1.tgz` file in
-the [Release](https://github.com/awslabs/clickstream-react-native/releases) page.
+the [Release](https://github.com/aws-solutions/clickstream-react-native/releases) page.
 
 ### Test
 
 ```bash
-yarn run test
+$ yarn run test
+
+# with lint
+$ sh ./deployment/run-unit-tests.sh
 ```
+
+## Collection of operational metrics
+
+This solution collects anonymized operational metrics to help AWS improve the
+quality of features of the solution. For more information, including how to disable
+this capability, please see the [implementation guide](https://docs.aws.amazon.com/solutions/latest/clickstream-analytics-on-aws).
 
 ## Security
 
