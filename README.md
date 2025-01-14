@@ -343,3 +343,5 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the [Apache 2.0 License](./LICENSE).
+
+Although this repository is released under the [Apache 2.0 License](./LICENSE), it includes some [third party dependencies](./NOTICE) with [BlueOak-1.0.0](https://spdx.org/licenses/BlueOak-1.0.0.html) license.
