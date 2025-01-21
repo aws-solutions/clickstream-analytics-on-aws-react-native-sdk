@@ -1,3 +1,4 @@
+
 # AWS Solution Clickstream Analytics SDK for React Native
 
 ## Introduction
