@@ -5,6 +5,9 @@
 # XDE
 .expo/
 
+# IntelliJ
+*.iml
+
 # VSCode
 .vscode/
 jsconfig.json
