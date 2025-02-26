@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update solution name
 - move project to the aws-solutions GitHub account
 
+### Security
+
+- bump versions for cross-spawn, serve-static, and micromatch
+
 ## [0.3.1] - 2024-12-03
 
 ### Changed
