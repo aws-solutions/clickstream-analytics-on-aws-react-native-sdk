@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.platforms     = { :ios => "13.0"}
   s.swift_version = '5.7'
-  s.source        = { :git => "https://github.com/awslabs/clickstream-react-native.git", :tag => "#{s.version}" }
+  s.source        = { :git => "https://github.com/aws-solutions/clickstream-react-native.git", :tag => "#{s.version}" }
 
   s.source_files  = "ios/*.{h,m,mm,swift}"
 

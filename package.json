@@ -1,7 +1,7 @@
 {
   "name": "@aws/clickstream-react-native",
-  "version": "0.3.1",
-  "description": "ClickstreamAnalytics React Native SDK",
+  "version": "0.3.2",
+  "description": "Clickstream Analytics React Native SDK",
   "main": ".lib/src/index.js",
   "module": "./lib-esm/src/index.js",
   "typings": "./lib-esm/src/index.d.ts",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/awslabs/clickstream-react-native.git"
+    "url": "https://github.com/aws-solutions/clickstream-analytics-on-aws-react-native-sdk.git"
   },
   "author": "AWS GCR Solutions Team",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/awslabs/clickstream-react-native.git/issues"
+    "url": "https://github.com/aws-solutions/clickstream-analytics-on-aws-react-native-sdk.git/issues"
   },
-  "homepage": "https://awslabs.github.io/clickstream-analytics-on-aws",
+  "homepage": "https://aws-solutions.github.io/clickstream-analytics-on-aws/en/latest/solution-overview/",
   "publishConfig": {
     "access": "public"
   },
@@ -50,7 +50,7 @@
   "workspaces": [
     "example"
   ],
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@4.5.3",
   "eslintConfig": {
     "root": true,
     "extends": [
@@ -103,5 +103,12 @@
     "!**/__tests__",
     "!**/.*",
     "!**/example"
-  ]
+  ],
+  "overrides": {
+    "cross-spawn": "^7.0.6",
+    "micromatch": "^4.0.8",
+    "send": "^0.19.0",
+    "serve-static": "^1.16.2",
+    "ws": "^8.18.0"
+  }
 }
