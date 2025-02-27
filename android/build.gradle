@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "com.android.tools.build:gradle:7.3.1"
         // noinspection DifferentKotlinGradleVersion
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -35,6 +35,7 @@ def getExtOrIntegerDefault(name) {
 
 android {
     compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
+    namespace 'software.aws.solution.clickstreamreactnative'
     defaultConfig {
         minSdkVersion getExtOrIntegerDefault("minSdkVersion")
         targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
@@ -69,6 +70,6 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "software.aws.solution:clickstream:0.14.0"
+    implementation "software.aws.solution:clickstream:0.14.1"
 }
 
