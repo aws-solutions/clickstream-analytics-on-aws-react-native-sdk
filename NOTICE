@@ -258,6 +258,7 @@ abort-controller under the MIT license.
 accepts under the MIT license.
 acorn-jsx under the MIT license.
 acorn under the MIT license.
+async-function under the MIT license.
 agent-base under the MIT license.
 aggregate-error under the MIT license.
 ajv under the MIT license.
@@ -417,6 +418,7 @@ fast-levenshtein under the MIT license.
 fast-xml-parser under the MIT license.
 fastq under the ISC license.
 fb-watchman under the Apache-2.0 license.
+fdir under the MIT license.
 file-entry-cache under the MIT license.
 fill-range under the MIT license.
 finalhandler under the MIT license.
@@ -439,6 +441,7 @@ function.prototype.name under the MIT license.
 functions-have-names under the MIT license.
 gensync under the MIT license.
 get-caller-file under the ISC license.
+get-proto under the MIT license.
 get-intrinsic under the MIT license.
 get-package-type under the MIT license.
 get-stream under the MIT license.
@@ -653,6 +656,7 @@ onetime under the MIT license.
 open under the MIT license.
 optionator under the MIT license.
 ora under the MIT license.
+own-keys under the MIT license.
 p-limit under the MIT license.
 p-locate under the MIT license.
 p-map under the MIT license.
@@ -720,6 +724,7 @@ run-parallel under the MIT license.
 safe-array-concat under the MIT license.
 safe-buffer under the MIT license.
 safe-regex-test under the MIT license.
+safe-push-apply under the MIT license.
 safer-buffer under the MIT license.
 scheduler under the MIT license.
 semver under the ISC license.
@@ -729,6 +734,7 @@ serve-static under the MIT license.
 set-blocking under the ISC license.
 set-function-length under the MIT license.
 set-function-name under the MIT license.
+set-proto under the MIT license.
 setprototypeof under the ISC license.
 shallow-clone under the MIT license.
 shebang-command under the MIT license.
@@ -775,6 +781,7 @@ temp under the MIT license.
 terser under the BSD-2-Clause license.
 test-exclude under the ISC license.
 text-table under the MIT license.
+tinyglobby under the MIT license.
 throat under the MIT license.
 through2 under the MIT license.
 tmpl under the BSD-3-Clause license.
